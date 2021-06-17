@@ -41,25 +41,19 @@ function initialPrompt() {
 
 let simpleScore = function(word){
   let score = word.length;
-  // for (i=0; i<word.length; i++){
-  //   points += `Points for '${word[i].toUpperCase()}': 1\n`;
-  // }
   return score;
 };
 
 let vowelBonusScore = function(word){
   word.toLowerCase();
-  const vowelStructure = {
-    1: ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z'],
-    3: ['a','e','i','o','u']
-  }
-  let points = "";
+  const vowels = 'aeiou';
+  const consonants = 'bcdfghjklmnopqrstvwxyz';
+  let points = 0;
   for (i=0; i<word.length; i++){
-
-    for (const pointValue in vowelStructure){
-      if (vowelStructure[pointValue].includes(word[i])){
-        points += `Points for '${word[i].toUpperCase()}': ${pointValue}\n`
-      }
+    if (vowels.includes(word[i].toLowerCase())){
+      points += 3;
+    } else if (vowels.includes(word[i].toLowerCase())){
+      points++;
     }
   };
   return points;
