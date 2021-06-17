@@ -93,14 +93,13 @@ function scorerPrompt(word) {
     console.log("2 - Scrabble: Uses scrabble point system");
     algorithmChoice = input.question("Enter 0, 1, or 2: ");
     if (algorithmChoice === '0'){
-      console.log(scoringAlgorithms[0].scorerFunction(word));
+      console.log(`score: ${scoringAlgorithms[0].scorerFunction(word)}`);
       return scoringAlgorithms[0];
     } else if (algorithmChoice === '1'){
-      console.log(scoringAlgorithms[1].scorerFunction(word));
+      console.log(`score: ${scoringAlgorithms[1].scorerFunction(word)}`);
       return scoringAlgorithms[1];
-      break;
     } else if (algorithmChoice === '2'){
-      console.log(scoringAlgorithms[2].scorerFunction(word));
+      console.log(`score: ${scoringAlgorithms[2].scorerFunction(word)}`);
       return scoringAlgorithms[2];
     } else {
       algorithmChoice = false;
@@ -108,13 +107,24 @@ function scorerPrompt(word) {
   }
 };
 
-function transform() {};
+function transform(obj) {
+  const newObj = {};
+  for (key in obj){
+    for (char in obj[key]){
+      let letter = (obj[key][char])
+      console.log(letter);
+      newObj[letter] = key;
+    }
+  }
+  console.log(newObj);
+};
 
 let newPointStructure;
 
 function runProgram() {
-   let word = initialPrompt();
-   let algo = scorerPrompt(word);
+  //  let word = initialPrompt();
+  //  let algo = scorerPrompt(word);
+  transform(oldPointStructure);
    
    
 }
