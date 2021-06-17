@@ -63,7 +63,9 @@ let scrabbleScore = function(word){
   let points = 0;
   for (i=0; i<word.length; i++){
     points += newPointStructure[word[i].toLowerCase()]
+    console.log(newPointStructure[word[i].toLowerCase()])
   }
+  console.log(points);
   return points;
 };
 
@@ -88,22 +90,13 @@ function scorerPrompt(word) {
   algorithmChoice = '';
   while (algorithmChoice !== true){
     console.log("Which scoring algorithm would you like to use?");
-    console.log("0 - Simple: One point per character");
-    console.log("1 - Vowel Bonus: Vowels are worth 3 points");
-    console.log("2 - Scrabble: Uses scrabble point system");
-    algorithmChoice = input.question("Enter 0, 1, or 2: ");
-    if (algorithmChoice === '0'){
-      console.log(`score: ${scoringAlgorithms[0].scorerFunction(word)}`);
-      return scoringAlgorithms[0];
-    } else if (algorithmChoice === '1'){
-      console.log(`score: ${scoringAlgorithms[1].scorerFunction(word)}`);
-      return scoringAlgorithms[1];
-    } else if (algorithmChoice === '2'){
-      console.log(`score: ${scoringAlgorithms[2].scorerFunction(word)}`);
-      return scoringAlgorithms[2];
-    } else {
-      algorithmChoice = false;
+    for (i=0; i<scoringAlgorithms.length; i++){
+      console.log(`${i} - ${scoringAlgorithms[i]['name']}: ${scoringAlgorithms[i]['description']}`)
     }
+    algorithmChoice = input.question("Enter 0, 1, or 2: ");
+    algorithmChoice = Number(algorithmChoice);
+    console.log(`score: ${scoringAlgorithms[algorithmChoice].scorerFunction(word)}`);
+    return scoringAlgorithms[algorithmChoice];
   }
 };
 
@@ -111,19 +104,18 @@ function transform(obj) {
   const newObj = {};
   for (key in obj){
     for (char in obj[key]){
-      let letter = (obj[key][char])
-      newObj[letter] = key;
+      let letter = (obj[key][char]).toLowerCase();
+      newObj[letter] = Number(key);
     }
   }
   return newObj;
 };
 
-let newPointStructure;
+let newPointStructure = transform(oldPointStructure);
 
 function runProgram() {
-  //  let word = initialPrompt();
-  //  let algo = scorerPrompt(word);
-  transform(oldPointStructure);
+   let word = initialPrompt();
+   let algo = scorerPrompt(word);
    
    
 }
