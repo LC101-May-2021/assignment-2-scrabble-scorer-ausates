@@ -65,7 +65,6 @@ let scrabbleScore = function(word){
     points += newPointStructure[word[i].toLowerCase()]
     console.log(newPointStructure[word[i].toLowerCase()])
   }
-  console.log(points);
   return points;
 };
 
