@@ -52,7 +52,7 @@ let vowelBonusScore = function(word){
   for (i=0; i<word.length; i++){
     if (vowels.includes(word[i].toLowerCase())){
       points += 3;
-    } else if (vowels.includes(word[i].toLowerCase())){
+    } else {
       points++;
     }
   };
