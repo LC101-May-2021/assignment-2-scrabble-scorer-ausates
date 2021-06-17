@@ -112,11 +112,10 @@ function transform(obj) {
   for (key in obj){
     for (char in obj[key]){
       let letter = (obj[key][char])
-      console.log(letter);
       newObj[letter] = key;
     }
   }
-  console.log(newObj);
+  return newObj;
 };
 
 let newPointStructure;
