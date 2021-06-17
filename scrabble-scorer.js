@@ -71,17 +71,17 @@ const scoringAlgorithms = [
   {
       name: "Simple",
       description: "One point per character",
-      scorerFunction: simpleScore
+      scoringFunction: simpleScore
    },
    {
       name: "Vowel Bonus",
       description: "Vowels are worth 3 points",
-      scorerFunction: vowelBonusScore
+      scoringFunction: vowelBonusScore
    },
    {
       name: "Scrabble",
       description: "Uses scrabble point system",
-      scorerFunction: scrabbleScore
+      scoringFunction: scrabbleScore
    }];
 
 function scorerPrompt(word) {
